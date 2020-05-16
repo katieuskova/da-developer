@@ -72,9 +72,17 @@ $(document).ready(function () {
                 required: true,
             },
         },
-        submitHandler: function (form) {
-            form.submit();
-            form.reset();
+        submitHandler(form) {
+            let th = $(form)
+
+            $.ajax({
+                type: 'POST',
+                url: 'mail.php',
+                data: th.serialize(),
+            }).done(() => {
+                th.trigger('reset')
+            });
+            return false;
         }
     });
 
