@@ -221,8 +221,15 @@ li {
 .header__burger {
     display: none;
     padding-top: 15px;
-    width: fit-content;
-    height: fit-content;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-border: 0;
+
 }
 
 .header__burger span {
@@ -1419,6 +1426,10 @@ sup {
     .header__burger span {
         height: 3px;
         width: 24px;
+    }
+    .burger-active {
+        left: 0px;
+        top: 5px;
     }
 
     .header__nav-open {

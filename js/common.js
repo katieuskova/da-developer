@@ -32,6 +32,7 @@ $('a[href*="#"]').click(function () {
     }, 800);
     return false;
 });
+
 $(document).ready(function () {
 
     $('.btn')
@@ -49,10 +50,11 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('input[type="tel"]').inputmask({ "mask": "+7(999) 999-9999" });
-});
 
-$(document).ready(function () {
+    $('input[type="tel"]').inputmask({
+        "mask": "+7(999) 999-9999"
+    });
+
     $('.popup__form').validate({
         errorPlacement(error, element) {
             return true;
@@ -81,56 +83,34 @@ $(document).ready(function () {
                 data: th.serialize(),
             }).done(() => {
                 th.trigger('reset')
+                $('body').removeClass('fixed');
+                $('.popup-container').fadeOut(1000)
+                
             });
             return false;
         }
     });
-
-
-    let burger = document.querySelector('.header__burger')
-    let menu = document.querySelector('.header__nav')
-    let navigation = document.querySelector('.nav__list')
-    burger.addEventListener('click', function (e) {
-        e.preventDefault();
-        menu.classList.toggle('header__nav-open');
-        navigation.classList.toggle('nav__list-open');
-        burger.classList.toggle('burger-active');
-    });
 });
 
 $(document).ready(function () {
-    var details = $('.details');
-    $(window).scroll(function () {
-        if ($(window).scrollTop() >= $(details).offset().top) {
-            $('.details__hashtag-1').addClass('hashtag-active-1');
-            $('.details__hashtag-2').addClass('hashtag-active-2');
-            $('.details__hashtag-3').addClass('hashtag-active-3');
-            $('.details__hashtag-4').addClass('hashtag-active-4');
-            $('.details__hashtag-5').addClass('hashtag-active-5');
-        }
-    });
-});
 
-$(document).ready(function(){
-    $('.submit').click(function(){
-       
-        let user_name    = $('.name__input').val();
-        var user_phone   = $('.phone__input').val();
-        var text_comment = $('.comments__input').val();
-        // отправляем данные
-        $.ajax({
-            url: "main.php", // куда отправляем
-            type: "post", // метод передачи
-            dataType: "json", // тип передачи данных
-            data: { // что отправляем
-                "user_name":    user_name,
-                "user_phone":   user_phone,
-                "text_comment": text_comment
-            },
-            // после получения ответа сервера
-            success: function(data){
-                $('.messages').html(data.result); // выводим ответ сервера
-            }
+            $('.header__burger').on('click', function (e) {
+                e.preventDefault();
+                $('.header__nav').toggleClass('header__nav-open')
+                $('.nav__list').toggleClass('nav__list-open')
+                $('.header__burger').toggleClass('burger-active')
+            });
+
+
+            let details = $('.details');
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() >= $(details).offset().top) {
+                    $('.details__hashtag-1').addClass('hashtag-active-1');
+                    $('.details__hashtag-2').addClass('hashtag-active-2');
+                    $('.details__hashtag-3').addClass('hashtag-active-3');
+                    $('.details__hashtag-4').addClass('hashtag-active-4');
+                    $('.details__hashtag-5').addClass('hashtag-active-5');
+                }
         });
     });
-});
