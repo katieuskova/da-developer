@@ -85,7 +85,7 @@ $(document).ready(function () {
                 th.trigger('reset')
                 $('body').removeClass('fixed');
                 $('.popup-container').fadeOut(1000)
-                
+
             });
             return false;
         }
@@ -93,24 +93,24 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-
-            $('.header__burger').on('click', function (e) {
-                e.preventDefault();
-                $('.header__nav').toggleClass('header__nav-open')
-                $('.nav__list').toggleClass('nav__list-open')
-                $('.header__burger').toggleClass('burger-active')
-            });
-
-
-            let details = $('.details');
-
-            $(window).scroll(function () {
-                if ($(window).scrollTop() >= $(details).offset().top) {
-                    $('.details__hashtag-1').addClass('hashtag-active-1');
-                    $('.details__hashtag-2').addClass('hashtag-active-2');
-                    $('.details__hashtag-3').addClass('hashtag-active-3');
-                    $('.details__hashtag-4').addClass('hashtag-active-4');
-                    $('.details__hashtag-5').addClass('hashtag-active-5');
-                }
+    $(".burger__container").click(function () {
+        $('.header__nav').toggleClass('header__nav-open')
+        $('.nav__list').toggleClass('nav__list-open')
+        $('.burger__container').toggleClass('burger-active')
+        $(".stick").toggleClass(function () {
+            return $(this).is('.open, .close') ? 'open close' : 'open';
         });
     });
+
+    let details = $('.details');
+
+    $(window).scroll(function () {
+        if ($(window).scrollTop() >= $(details).offset().top) {
+            $('.details__hashtag-1').addClass('hashtag-active-1');
+            $('.details__hashtag-2').addClass('hashtag-active-2');
+            $('.details__hashtag-3').addClass('hashtag-active-3');
+            $('.details__hashtag-4').addClass('hashtag-active-4');
+            $('.details__hashtag-5').addClass('hashtag-active-5');
+        }
+    });
+});

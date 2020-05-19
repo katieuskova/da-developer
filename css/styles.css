@@ -218,37 +218,154 @@ li {
     padding-bottom: 65px;
 }
 
-.header__burger {
-    display: none;
-    padding-top: 15px;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    -webkit-border: 0;
-
-}
-
-.header__burger span {
+.stick {
     height: 8px;
     width: 46px;
+    border-radius: 4px;
     display: block;
     background: linear-gradient(to top, #ff8f5a, #ff3294);
+    margin-bottom: 5px;
 }
 
-.header__burger span:nth-child(2) {
-    margin: 5px 0;
+.burger__container {
+    display: none;
 }
 
-.burger-active {
-    transform: rotate(-90deg);
-    transition: all 1s;
-    position: absolute;
-    left: 30px;
-    top: 10px;
+.stick-1.open {
+    animation: stick-1-open .6s ease-out forwards;
+}
+
+.stick-2.open {
+    animation: stick-2-open .6s linear forwards;
+}
+
+.stick-3.open {
+    animation: stick-3-open .6s linear forwards;
+}
+
+@keyframes stick-1-open {
+    0% {
+        width: 80px;
+    }
+
+    40% {
+        width: 8px;
+        transform: translate(40px, 0px);
+    }
+
+    75%,
+    80% {
+        width: 8px;
+        transform: translate(40px, -50px);
+        animation-timing-function: cubic-bezier(0, 1, 1, 1);
+    }
+
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes stick-2-open {
+    80% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-6px, -5px) rotate(45deg);
+    }
+}
+
+@keyframes stick-3-open {
+    80% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-6px, -18px) rotate(-45deg);
+    }
+}
+
+.stick-1.close {
+    width: 8px;
+    transform: translate(27px, 26px);
+    animation: stick-1-close .6s ease-out forwards;
+}
+
+.stick-2.close {
+    transform: translate(0px, 0px) rotate(40deg);
+    animation: stick-2-close .6s ease-out forwards;
+}
+
+.stick-3.close {
+    transform: translate(0px, -23px) rotate(-40deg);
+    animation: stick-3-close .6s ease-out forwards;
+}
+
+@keyframes stick-1-close {
+
+    0%,
+    70% {
+        width: 0px;
+    }
+
+    100% {
+        width: 46px;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes stick-2-close {
+    0% {
+        width: 46px;
+    }
+
+    20% {
+        width: 8px;
+        transform: translate(0, 0px) rotate(40deg);
+    }
+
+    40% {
+        width: 0px;
+    }
+
+    65% {
+        transform: translate(0, -70px);
+        animation-timing-function: cubic-bezier(0, 1, 1, 1);
+    }
+
+    80% {
+        width: 0px;
+    }
+
+    100% {
+        width: 46px;
+        transform: translate(0, 0px);
+    }
+}
+
+@keyframes stick-3-close {
+    0% {
+        width: 46px;
+    }
+
+    20% {
+        width: 8px;
+        transform: translate(0, -23px) rotate(-40deg);
+    }
+
+    65% {
+        transform: translate(0, -93px);
+        animation-timing-function: cubic-bezier(0, 1, 1, 1);
+    }
+
+    90% {
+        width: 8px;
+    }
+
+    100% {
+        width: 46px;
+        transform: translate(0, 0px);
+    }
 }
 
 .header__nav {
@@ -258,6 +375,7 @@ li {
 .header__nav-open {
     display: block;
 }
+
 
 .nav__list {
     display: flex;
@@ -906,7 +1024,7 @@ sup {
     height: 100%;
 }
 
-@media(max-width:1760px){
+@media(max-width:1760px) {
 
     .main__hashtag-1 {
         top: 15px;
@@ -952,7 +1070,7 @@ sup {
     }
 }
 
-@media(max-width:1250px){
+@media(max-width:1250px) {
 
     .container {
         padding: 0 39px 0 39px;
@@ -966,8 +1084,15 @@ sup {
         display: block;
     }
 
-    .header__burger {
+    .burger__container {
         display: block;
+        margin-top: 16px;
+    }
+
+    .burger-active {
+        position: absolute;
+        top: 6px;
+        left: 45px;
     }
 
     .nav__list-open {
@@ -1084,7 +1209,7 @@ sup {
     }
 }
 
-@media(max-width:1024px){
+@media(max-width:1024px) {
 
     .main__hashtag-4 {
         visibility: visible;
@@ -1139,7 +1264,11 @@ sup {
     }
 }
 
-@media(max-width:1000px){
+@media(max-width:1000px) {
+
+    .burger-active {
+        left: 20px;
+    }
 
     .popup__title {
         font-size: 30px;
@@ -1163,13 +1292,8 @@ sup {
     }
 
     .container {
-        padding-left:20px;
+        padding-left: 20px;
         padding-right: 20px;
-    }
-
-    .burger-active {
-        left: 10px;
-        top: 7px;
     }
 
     .main__hashtag-1 {
@@ -1226,16 +1350,18 @@ sup {
     }
 }
 
-@media(max-width:768px){
+@media(max-width:768px) {
 
-    .header__burger {
-        padding-top: 10px;
-    }
-
-    .header__burger span {
-        height: 5px;
+    .stick {
+        height: 6px;
         width: 40px;
+        margin-bottom: 7px;
     }
+
+    .burger__container {
+        margin-top: 5px;
+    }
+
 
     .header__contacts {
         margin-top: 0;
@@ -1301,7 +1427,7 @@ sup {
     }
 
     .main__photo {
-        max-width: 69%;
+        width: 69%;
         margin-left: 46px;
         margin-top: 22px;
     }
@@ -1362,7 +1488,81 @@ sup {
     }
 }
 
-@media(max-width:560px){
+@media(max-width:560px) {
+
+    .header {
+        padding-bottom: 60px;
+    }
+
+    .burger__container {
+        margin-top: 10px;
+    }
+
+    .stick {
+        width: 24px;
+        height: 3px;
+        margin-bottom: 5px;
+    }
+
+    .stick-1.close {
+        animation: stick-1-close .3s ease-out forwards;
+    }
+
+    .stick-2.close {
+        animation: stick-2-close .3s ease-out forwards;
+    }
+
+    .stick-3.close {
+        animation: stick-3-close .3s ease-out forwards;
+    }
+
+    .stick-1.open {
+        animation: stick-1-open .3s ease-out forwards;
+    }
+
+    .stick-2.open {
+        animation: stick-2-open .3s ease-out forwards;
+    }
+
+    .stick-3.open {
+        animation: stick-3-open .3s ease-out forwards;
+    }
+
+    @keyframes stick-1-close {
+
+        100% {
+            width: 24px;
+            transform: translate(0, 0);
+        }
+    }
+
+    @keyframes stick-2-close {
+
+        100% {
+            width: 24px;
+            transform: translate(0, 0px);
+        }
+    }
+
+    @keyframes stick-3-close {
+
+        100% {
+            width: 24px;
+            transform: translate(0, 0px);
+        }
+    }
+
+    @keyframes stick-3-open {
+        100% {
+            transform: translate(-6px, -13px) rotate(-45deg);
+        }
+    }
+
+    .burger-active {
+        left: 15px;
+        top: 4px;
+    }
+
 
     .popup__title {
         font-size: 25px;
@@ -1421,15 +1621,6 @@ sup {
 
     .submit {
         margin-top: 10px;
-    }
-
-    .header__burger span {
-        height: 3px;
-        width: 24px;
-    }
-    .burger-active {
-        left: 0px;
-        top: 5px;
     }
 
     .header__nav-open {
