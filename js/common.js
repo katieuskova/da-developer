@@ -96,7 +96,9 @@ $(document).ready(function () {
     $(".burger__container").click(function () {
         $('.header__nav').toggleClass('header__nav-open')
         $('.nav__list').toggleClass('nav__list-open')
+        $('.nav__item').toggleClass('nav__item-open')
         $('.burger__container').toggleClass('burger-active')
+        $('.hashtag').toggleClass('hashtag-off')
         $(".stick").toggleClass(function () {
             return $(this).is('.open, .close') ? 'open close' : 'open';
         });
